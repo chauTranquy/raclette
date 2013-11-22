@@ -1,0 +1,32 @@
+Ext
+		.define(
+				'TextoCMS.view.medias.DirectoryForm',
+				{
+					extend : 'Ext.window.Window',
+					alias : 'widget.directoryform',
+					modal : true,
+					items : [
+							{
+								xtype : 'form',
+								bodyStyle : 'background-color:transparent',
+								border : false,
+								autoHeight : true,
+								padding : '5',
+								items : [ {
+									xtype : 'textfield',
+									name : 'folderName',
+									labelWidth : 120,
+									labelStyle : 'text-align:right',
+									width : 300,
+									allowBlank : false,
+									fieldLabel : 'Nom du r&eacute;pertoire',
+									minLengh : 3,
+									regex : /^([a-zA-Z]{1}[a-zA-Z0-9_-]+)$/,
+									regexText : 'Le nom du r&eacute;pertoire doit uniquement comporter des caract&egrave;res alphanum&eacute;riques,<br />des \'-\' ou des \'_\' et aucun espace'
+								} ]
+							}],buttons:[{text:'Cr&eacute;er', disabled:true, iconCls:'addFolder', action:'add'}, {text:"Fermer",action:'close', iconCls:'close'} ],
+							initComponent:function(){
+								this.callParent(arguments);
+								
+							}
+				});

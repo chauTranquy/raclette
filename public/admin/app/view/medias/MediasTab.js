@@ -1,0 +1,23 @@
+Ext.define('TextoCMS.view.medias.MediasTab',{
+	extend:'Ext.panel.Panel',
+	alias:'widget.mediastab',
+	layout:'border',
+	border:false,
+	requires:['TextoCMS.view.medias.BrowserToolBar'],
+	iconCls:'mediaPanel',
+	id:'mediaPanel',
+	tooltip:'G&eacute;rer vos m&eacute;dias',
+	title:'Biblioth&eacute;que de m&eacute;dias',
+	 defaults : {
+        split : true
+     },
+	items:[
+	       {region:'west', 
+	    	   //collapsible:true, 
+	    	   minWidth:250, width:250, frame : true, iconCls:'fileManagerIcon',
+				tools:[{type:'refresh', scope:this}], collpaseFirst:false, layout:'fit', title:'R&eacute;pertoire des m&eacute;dias'},
+	       {region:'center',layout:'border',id:'centerTabRegion',border:false, frame:true, tbar:{xtype:'browsertoolbar'}}]
+		
+	
+	
+});

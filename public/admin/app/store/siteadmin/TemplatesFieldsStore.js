@@ -1,0 +1,7 @@
+Ext.define('TextoCMS.store.siteadmin.TemplatesFieldsStore',{
+	extend:'Ext.data.Store',
+	id:'TemplatesFieldsStore',
+	requires:['TextoCMS.model.siteadmin.TemplatesFieldsModel'],
+	model:'TextoCMS.model.siteadmin.TemplatesFieldsModel'
+	
+});

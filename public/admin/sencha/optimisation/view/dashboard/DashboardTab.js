@@ -1,0 +1,1 @@
+Ext.define('TextoCMS.view.dashboard.DashboardTab',{extend:'Ext.panel.Panel',title:'Statistiques',iconCls:'whiteboard',layout:{type:'fit'},requires:['TextoCMS.view.dashboard.Analytics'],alias:'widget.dashboard',initComponent:function(){this.items=[{xtype:'analytics',region:'center',layout:'border',bodyPadding:10}];this.callParent(arguments)}});

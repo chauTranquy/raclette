@@ -1,0 +1,1 @@
+Ext.define('TextoCMS.store.cms.VersionStore',{extend:'Ext.data.Store',requires:['TextoCMS.model.cms.VersionModel'],model:'TextoCMS.model.cms.VersionModel'});

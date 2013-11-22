@@ -1,0 +1,1 @@
+Ext.define('TextoCMS.model.medias.BrowserTreeModel',{extend:'Ext.data.Model',fields:['name','path',{name:'qtip',mapping:'name'},{name:'text',mapping:'name'}],proxy:{type:'texto'}});

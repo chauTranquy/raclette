@@ -1,0 +1,10 @@
+Ext.define('TextoCMS.store.cms.ArboTreeStore',
+	{
+	extend:'Ext.data.TreeStore',
+	requires:['TextoCMS.model.cms.ArboTreeModel'],
+	model:'TextoCMS.model.cms.ArboTreeModel',
+	autoLoad:false
+	
+	}
+);
+

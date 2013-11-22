@@ -1,0 +1,10 @@
+Ext.define('TextoCMS.model.siteadmin.ExtraParamsModel', {
+        extend: 'Ext.data.Model',
+        fields: [
+            'key',
+            'value'
+        ]
+    });
+/**
+ * 
+ */

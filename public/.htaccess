@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+
+SetEnv APPLICATION_ENV staging
+
+RewriteEngine OnRewriteCond %{HTTP_HOST} ^glutabye\.comRewriteRule ^(.*)$ http://www.glutabye.com/$1 [R=permanent,L]
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule !\.(js|ico|gif|jpg|png|css|woff|ttf|pdf|html|swf|eot)$ index.php
+

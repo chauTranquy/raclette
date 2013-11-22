@@ -1,0 +1,4 @@
+Ext.define('TextoCMS.model.siteadmin.UserGroupModel',{
+	extend:'Ext.data.Model',
+	 fields: [{type: 'int', name: 'id_user_group'},{type: 'string', name: 'title'}]
+});

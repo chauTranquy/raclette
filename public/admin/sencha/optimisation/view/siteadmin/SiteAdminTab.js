@@ -1,0 +1,1 @@
+Ext.define('TextoCMS.view.siteadmin.SiteAdminTab',{extend:'Ext.tab.Panel',alias:'widget.siteadmintab',border:false,iconCls:'siteAdminPanel',id:'siteadminPanel',tooltip:'Administration du site',title:'Administration du site',margin:'20 10 10 10',plain:true,style:'background:transparent',items:[]});

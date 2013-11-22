@@ -1,0 +1,31 @@
+.espacepro{
+background-image:url("/admin/img/icons/group.png");
+}
+
+.sync, .syncAll{
+background-image:url("/admin/img/icons/user_go.png");
+}
+
+.generatePass{
+	background-image:url("/admin/img/icons/lock_add.png");
+}
+
+.delete{
+	background-image:url("/admin/img/icons/delete.png");
+}
+
+.valid{
+	background-image:url("/admin/img/icons/accept.png");
+}
+
+.addClient{
+	background-image:url("/admin/img/icons/user_add.png");
+}
+
+.refresh{
+	background-image:url("/admin/img/icons/arrow_refresh.png");
+}
+.proTab{background-image:url("/admin/img/icons/group_gear.png");}
+.x-grid-row .x-grid-cell-inner {
+    		white-space: normal;
+    	}
