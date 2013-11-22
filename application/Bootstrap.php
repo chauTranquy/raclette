@@ -14,9 +14,7 @@ protected function _initDoctype()
     
 protected function _initLoaderResource()
 {
-	
-
-     $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
+	     $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
                 'basePath'  =>APPLICATION_PATH."/modules/admin",
                 'namespace' => 'Admin'
         ));
