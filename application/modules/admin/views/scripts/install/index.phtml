@@ -1,0 +1,23 @@
+<?php
+?>
+<script type="text/javascript">
+
+Ext.Loader.setConfig({enabled:true,paths:{'CmsClass':'<?php  echo CDN_URL?>_cmsAdmin/ext/CmsClass/',
+	'InstallClass':'/install/js/ext/Class/', 'Ext':'<?php  echo CDN_URL?>_cmsAdmin/ext/'}});
+
+Ext.require(['InstallClass.Installer']);
+var installClass;
+Ext.onReady(function(){
+
+installClass = new InstallClass.Installer();
+	
+});
+
+
+</script>
+<div id="headerAdmin">
+<h1><img src="<?php echo $this->site->media_dir.$this->site->site_logo?>" alt="<?php  echo $this->site->site_name?>" align="absmiddle"/>
+Texto CMS - Installation
+</h1>
+
+<div class="loader">Chargement en cours</div>

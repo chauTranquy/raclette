@@ -1,0 +1,176 @@
+<?php
+echo $this->docType();
+?>
+
+<head>
+    <?php echo $this->headMeta() ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headScript() ?>
+
+    <?
+    if (!$this->layout()->isHome):
+        ?>
+        <style>
+            .reveal-modal-bg { 
+                position: fixed; 
+                height: 100%;
+                width: 100%;
+                background: #000;
+                background: rgba(0,0,0,.8);
+                z-index: 1000;
+                display: none;
+                top: 0;
+                left: 0; 
+            }
+
+            .reveal-modal {
+                visibility: hidden;
+                top: 100px; 
+                width: 520px;
+                background: #eee;
+                position: absolute;
+                z-index: 1001;
+                padding: 30px 40px 34px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+                -moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+                -box-shadow: 0 0 10px rgba(0,0,0,.4);
+            }
+
+            .reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+            .reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+            .reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+            .reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
+
+            .reveal-modal .close-reveal-modal {
+                font-size: 22px;
+                line-height: .5;
+                position: absolute;
+                top: 8px;
+                right: 11px;
+                color: #aaa;
+                text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+                font-weight: bold;
+                cursor: pointer;
+                border: 1px solid #000;
+                border-radius: 100%;
+                padding: 2px 1px;
+            } 
+            #revealContent{position:relative; width:630px; margin: 100px auto; height:auto; z-index: 1100; background: white; padding: 20px;}
+        </style>
+        <?
+    endif;
+    ?>
+
+
+</head>
+<body>
+    <?php
+
+    
+    if ($this->layout()->isHome): echo $this->layout()->content;
+    
+    else:
+        ?>
+
+        <div id="revealDiv" class="reveal-modal" style="opacity: 0;"></div>
+        <div id="contenerDiv" >
+            <div id="menuMobile" >Menu</div>
+            <header id="header">
+                <div class="fondHeader" ></div>
+                <div class="fondHeader" ></div>
+<?
+  if ($this->layout()->flag):
+           echo '<a href="'.$this->layout()->traductionHrefFr.'" class="frFlag"></a><a href="'.$this->layout()->traductionHrefEn.'" class="enFlag"></a>';
+        endif;
+?>
+                        <div id="ulDeco"></div>
+                <?
+                echo $this->partial("menuTop.phtml", array(
+                    'menuTop' => $this->layout()->menuTop,
+                    "isHome" => $this->layout()->isHome,
+                    "id_rubrique" => $this->layout()->getView()->mainRubID
+                ));
+                ?>
+            </header>
+            <div id="blockLeft" class="blockLeftCls" >
+               
+                <div class="fondBlockLeft" <? if($this->layout()->parentblockleft){echo 'style="background-image: url(/medias'.$this->layout()->parentblockleft.')"'; }else{ echo 'style="background-image: url(/img/blockLeft2.jpg)"'; } ?>></div>
+            </div>
+            <nav id="nav" >
+                <?
+                                
+                if ($this->layout()->subMenu):
+                    ?>
+                    <ul class="fr">
+                        <?
+                        foreach ($this->layout()->subMenu as $subMenu):
+                            ?>   
+                            <li>
+                                <a class="
+                                    <?
+                                if (strcmp($subMenu[2], 'true') == 0): echo 'selected';
+                                endif;
+                                ?>" <?
+                                if (strcmp($subMenu[2], 'true') != 0): echo "href='" . $subMenu[1] . "'";
+                                endif;
+                                ?> title="<? echo $subMenu[0] ?>" ><? echo $subMenu[0] ?>
+                                </a>
+                            </li>
+                                <?
+                            endforeach;
+                            ?>
+                    </ul>
+
+                    <?
+                endif;
+                ?>
+            </nav>
+            <section id="section" >
+<!--                <div id="filAriane" class="link">
+                    <a href="/" data-parentid="0" data-title="Accueil" class="link">Accueil</a> / <h1><span class="strong">Nos Produits</span></h1>
+                </div>-->
+                <?
+                              
+                echo $this->layout()->content;
+                ?>
+            </section>
+            <div id="logo" >
+                <div id="ombre"></div>
+                <div id="mur">
+                    <div id="logoImg" ></div>
+                    <div id="decoHeader" ></div>
+                    <p>PAULME <?  if ($this->layout()->ukFlag): echo '<span class="uk">DECOLLETAGE</span>'; else: echo '<span class="uk">D&Eacute;COLLETAGE</span>'; endif ?></p>
+
+                </div>
+            </div>
+
+            <footer id="footer" >
+                <?php
+                echo $this->partial('menuBottom.phtml', array('menuBas' => $this->layout()->menuBas));
+                ?>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var paulme;
+
+            $(document).ready(function()
+            {
+
+                paulme = new Paulme();
+                paulme.initPageInterieur();
+
+                if ($('#contactForm').length > 0)
+                    paulme.contactInit();
+            });
+        </script>
+    <?
+    endif;
+    ?>
+
+
+</body>
+</html>
+

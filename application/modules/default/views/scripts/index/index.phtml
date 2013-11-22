@@ -1,0 +1,244 @@
+<div style="position: fixed;  top: 0px; left:0; background: white; z-index: 666666;">
+    <?
+//var_dump($this->layout()->menuTop);
+//    var_dump($this->data);
+//    var_dump($this->layout()->menuTop[0]['children']);
+    ?>
+</div>
+<div id="contenerDiv" <?
+if ($this->layout()->isHome) {
+    echo 'class="home"';
+}
+?> >
+    <div id="petitRond"></div>
+    <div id="rondMoyen"></div>  
+    <div id="grandRond"></div>  
+    <div id="traitMiLong"></div>  
+    <div id="traitMoyen"></div>
+    <div id="logoRougeM1"></div>
+    <div id="logoRougeM2"></div>
+    <div id="logoOmbre"></div>
+    <div id="logoBleu"></div>
+    <div id="logoJaune"></div>
+    <header id="header">
+        <h1>
+            <span class="fr paulmeSpan" >Paulme</span>
+            <span class="fr" >d&Eacute;colletage</span>
+        </h1>
+    </header>
+    <section class="galleryImages">
+        <div class="fondSection"></div>
+        <div class="fondSection"></div>
+    </section>
+
+
+    <div id="menuDeco"></div>
+    <div id="montagne"></div>
+    <div id="menuMobile" >Menu</div>
+    <div id="menu">
+
+
+        <ul class="fr">
+            <!--<li><a href="/" <?php // if ($this->layout()->isHome):    ?>class="selected"<?php // endif    ?> data-title="Accueil" id="menu_0">Accueil</a></li>-->
+
+            <?php
+            foreach ($this->layout()->menuTop as $menu):
+                $menu = (object) $menu;
+                ?>
+
+                <li><a href="<?php echo $menu->link ?>" data-title="<?php echo $menu->title ?>" id="menu_<? echo $menu->id_rubrique ?>" <?php if ($menu->id_rubrique == $this->layout()->getView()->mainRubID): ?>class="selected"<?php endif; ?>><?php echo $menu->title ?></a>
+
+                    <?
+                    if ($menu->children):
+                        ?>
+                        <ul class="subnav">
+                            <?
+                            foreach ($menu->children as $subnav):
+                                ?>
+                                <li>
+                                    <a href="<? echo $subnav['link'] ?>" title="<? echo $subnav['title'] ?>" ><? echo $subnav['title'] ?></a>
+                                </li>
+                                <?
+                            endforeach;
+                            ?>
+                        </ul>
+                        <?
+                    endif;
+                    ?>
+                </li>
+                <?php //endif;  ?>
+
+
+
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+
+
+    <footer id="footer">
+        <?
+        if ($this->layout()->flag):
+            echo '<a href="'.$this->layout()->traductionHrefFr.'" class="frFlag"></a><a href="'.$this->layout()->traductionHrefEn.'" class="enFlag"></a>';
+        endif;
+        ?>
+
+        <div class="fr"> <? echo $this->data->adressefr; ?> </div>
+
+
+        <?php
+        //  echo $this->partial('menuBottom.phtml', array('menuBas' => $this->layout()->menuBas));
+        ?>
+    </footer>
+
+
+</div>
+
+<div class="accueilMobile">
+    <div id="top"><img src="/img/pixT.png" alt="PAULME D&Eacute;COLLETAGE"/></div>
+    <div id="middle">
+
+        <ul>
+            <li><a href="/" <?php if ($this->layout()->isHome): ?>
+                       class="selected" <?php endif ?> data-title="Accueil" id="menu_0">Accueil</a>
+            </li>
+
+            <?php
+            foreach ($this->layout()->menuTop as $menu):
+                $menu = (object) $menu;
+                ?>
+
+                <li><a href="<?php echo $menu->link ?>"
+                       data-title="<?php echo $menu->title ?>"
+                       id="menu_<? echo $menu->id_rubrique ?>"
+    <?php if ($menu->id_rubrique == $this->layout()->getView()->mainRubID): ?>
+                           class="selected" <?php endif; ?>><?php echo $menu->title ?> </a>
+                </li>
+
+
+<?php endforeach; ?>
+
+        </ul>
+
+    </div>
+    <div id="bottom">
+        <?
+        if ($this->layout()->flag):
+            echo '<a href="'.$this->layout()->traductionHrefFr.'" class="frFlag"></a><a href="'.$this->layout()->traductionHrefEn.'" class="enFlag"></a>';
+        endif;
+        ?>
+        <br />
+        <br />
+        400, Av Victor Hugo - B.P. 34 - F - 74802 LA ROCHE SUR FORON<br>
+        T&eacute;l. : <a class="numeroTel">+33.4.50.03.11.40</a> - Fax : +33.4.50.25.97.43 - Email : <a class="email" href="mailto:info.sales@paulme.com">info.sales@paulme.com</a> <br>
+
+        <?php
+        // echo $this->partial('menuBottom.phtml', array('menuBas' => $this->layout()->menuBas));
+        ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery.fn.center = function() {
+        this.css("position", "absolute");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                $(window).scrollLeft()) + "px");
+        return this;
+    };
+    var paulme;
+    $(document).ready(function()
+    {
+
+
+        if (window.innerWidth > 600) {
+            $("#contenerDiv").center();
+
+            //Déplacement des objets
+            $("#petitRond").css({'display': 'block'}).animate({
+                top: "42px",
+                left: "454px"
+            }, 1500);
+
+            $("#rondMoyen").animate({
+                top: "-95px",
+                left: "313px"
+            }, 1500);
+
+
+            $("#grandRond").animate({
+                top: "-167px",
+                left: "396px"
+            }, 1500);
+
+            $("#traitMiLong").animate({
+                top: "321px",
+                right: "3px"
+            }, 1500);
+
+            $("#traitMoyen").animate({
+                top: "211px",
+                left: "0px"
+            }, 1500);
+
+            $("#logoRougeM1").animate({
+                top: "110px",
+                left: "552px"
+            }, 1500);
+
+            $("#logoRougeM2").animate({
+                top: "120px",
+                left: "578px"
+            }, 1500);
+
+
+            $("#logoBleu").animate({
+                top: "131px",
+                left: "549px"
+            }, 1500);
+
+            $("#logoJaune").animate({
+                top: "83px",
+                left: "516px"
+            }, 1500);
+
+            // on crée les bg de la section
+            var sectionFond = $(".fondSection");
+            $(sectionFond[0]).css('background', 'url("img/fond1.jpg")');
+            $(sectionFond[1]).css('background', 'url("img/fond2.jpg")');
+
+
+            var Example3 = new (function() {
+                var $galleryImages, // An array of image elements
+
+                        imageId = 0, // Which image is being shown
+                        incrementTime = 5500,
+                        updateTimer = function() {
+                    $galleryImages.eq(imageId).stop(true, true).animate({opacity: 0}, 3000);
+                    imageId++;
+                    if (imageId >= $galleryImages.length) {
+                        imageId = 0;
+                    }
+                    $galleryImages.eq(imageId).stop(true, false).animate({opacity: 1}, 3000);
+                },
+                        init = function() {
+                    $galleryImages = $('.galleryImages div');
+
+                    Example3.Timer = $.timer(updateTimer, incrementTime, true).once();
+                };
+                this.toggleGallery = function() {
+                    if (this.Timer.active) {
+                        this.Timer.pause();
+                    }
+                    else {
+                        this.Timer.play();
+                    }
+                };
+                $(init);
+            });
+        }
+        paulme = new Paulme();
+//        paulme.languageChange();
+    });
+</script>

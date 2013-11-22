@@ -1,0 +1,43 @@
+
+<ul id="menu" class="fr">
+    <li class="accueil"><a href="/">Accueil</a></li>
+    <?php
+    foreach ($this->menuTop as $menu):
+        $menu = (object) $menu;
+    
+      
+        
+        $nomenu = $menu->tpl == "rubactus" || $menu->tpl == "rubriquePro" && !$this->authenticated;
+        ?>
+        <?php
+        if (count($menu->children) > 0 && $nomenu == false) :
+            $link =  $menu->link;
+            ?>
+            <li class="<?php if ($nomenu): ?> nomenu<?php endif; ?><?php if ($menu->id_rubrique == $this->id_rubrique || $menu->id_rubrique == $menu->selectedParentId ): ?> selected<?php endif; ?>"><a href="<?php echo $link ?>"><?php echo $menu->title; ?></a>
+                <ul class="submenu">
+                    <?php
+                    foreach ($menu->children as $subMenu):
+                        $subMenu = (object) $subMenu;
+                        ?>
+
+                        <li><a href="<?php echo $subMenu->link ?>"><?php echo $subMenu->title ?></a></li>
+                    <?php endforeach; ?>
+
+                </ul>
+            </li>
+
+        <?php else :
+            ?>
+
+            <li class="nomenu <?php if ($menu->id_rubrique == $this->id_rubrique): ?> selected<?php endif; ?>"><a href="<?php echo $menu->link ?>"><?php echo $menu->title; ?></a></li>
+                <?php if ($menu->tpl == "rubriquePro" && $this->authenticated): ?>
+
+            <?php endif; ?>
+
+
+        <?php endif; ?>
+
+    <?php endforeach; ?>
+
+
+</ul>

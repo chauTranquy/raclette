@@ -1,0 +1,29 @@
+<?php
+
+if(count($this->subMenu)>0):
+
+?>
+<ul class="menuLeft">
+<?php  foreach($this->subMenu as $menu):
+$menu = (object)$menu;
+
+
+?>
+
+
+<?php if($this->id_article==$menu->id_rubrique):?>
+<li class="selected">
+<em class="icon-chevron-right"></em>&nbsp;<?php  echo $menu->title;?></li>
+<?php  else :
+
+?>
+<li>
+<a href="<?php  echo $menu->link?>"><?php  echo $menu->title;?></a></li>
+
+<?php  endif;?>
+
+<?php  endforeach;?>
+
+</ul>
+
+<?php  endif; ?>

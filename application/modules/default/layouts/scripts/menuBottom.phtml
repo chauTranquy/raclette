@@ -1,0 +1,27 @@
+
+
+
+<ul class="fr">
+    <?php
+    foreach ($this->menuBas as $key => $menu) :
+        $menu = (object) $menu;
+        ?>
+        <li class="<?php if ($key == count($this->menuBas) - 1 || $key == count($this->menuBas) - 4): ?>no <?php endif; ?><? if ($key == count($this->menuBas) - 3): ?>clear<? endif ?>">
+            <a href=" <?php echo $menu->link ?>"><?php echo $menu->title ?></a>
+        </li>
+
+
+    <?php endforeach; ?>
+</ul>
+
+
+<?php $url = urlencode("http://" . $_SERVER['HTTP_HOST'] . "" . $_SERVER['REQUEST_URI']) ; ?>
+<div id="share">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url ?>" target="_blank" class="tipTop" title="Partager sur Facebook"><i class="fa fa-facebook"></i></a>
+    <a href="http://twitter.com/home?status=<?php echo $url; ?>"  target="_blank" class="tipTop" title="Partager sur Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="https://plus.google.com/share?url=<?php echo $url; ?>"  target="_blank" class="tipTop" title="Partager sur Google+"><i class="fa fa-google-plus"></i></a>
+
+</div>
+
+
+

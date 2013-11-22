@@ -1,0 +1,24 @@
+<?php 
+
+
+
+?>
+
+<div class="left visuelRecette">
+
+<img src="<?php  echo IMG_FOLDER.$data->visuel?>" alt="<?php  echo $data->titre?>" class="img" />
+
+
+<img src="/img/produits/logo-afdiag.png" alt="signataire du contrat de licence avec l'Afdiag" title="signataire du contrat de licence avec l'Afdiag" class="tip" />
+<a href="#" class="printBtn">Imprimer</a>
+CONNEXE
+</div>
+<div class="left contenuRecette">
+<h1><?php  echo $data->titre?></h1>
+<h2>Ingr&eacute;dients</h2>
+<?php  echo $data->ingredients?>
+<h2>Recette</h2>
+<?php  echo $data->recette?>
+
+</div>
+<div class="clear"></div>

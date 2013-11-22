@@ -1,0 +1,35 @@
+<?php
+echo $this->partial('filariane.phtml', array("filAriane" => $this->filAriane));
+?>
+
+<article class="content page">
+
+    <div class="articleContener fr">
+
+        <?php
+        echo $this->contentfr;
+        ?>
+        <div class="clear"></div>
+    </div>
+
+    <div class="articleContener uk">
+
+        <?php
+        echo $this->contentuk;
+        ?>
+        <div class="clear"></div>
+    </div>
+</article>
+<div class="clear"></div>
+
+<ul class="listeGalleria">
+    <?
+           
+    foreach ($this->visuels as $visuel):
+        ?>
+        <!--<li><img src="<? // echo "/medias".$visuel->src ; ?>" alt="" ></li>-->
+        <li style="background : url(<? echo '/medias'.$visuel->src ; ?>) no-repeat #bfbfbf; background-size:cover;" ></li>
+        <?
+    endforeach;
+    ?>
+</ul>

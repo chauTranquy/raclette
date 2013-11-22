@@ -1,0 +1,192 @@
+<?php 
+  echo $this->docType();
+  
+  
+  ?>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent" />
+<meta property="og:image" content="http://<?php  echo $_SERVER['HTTP_HOST']?>/img/logoSmall.png" />
+<meta property="og:description" content="Agence Texto - Annecy - Agence Conseil en communication" />
+<meta property="og:url" content="http://<?php  echo $_SERVER['HTTP_HOST']?>" />
+  <?php  echo $this->headTitle()?>
+  <meta name="keywords" content="<?php  echo $this->layout()->getView()->keywords?>" />
+  <meta name="description" content="<?php  echo $this->layout()->getView()->description?>" />
+  <?php  if($this->layout()->getView()->canonical):?>
+  <link rel="canonical" href="<?php  echo $this->layout()->getView()->canonical_url ?>" />
+   <?php endif;?>
+<?php echo $this->headLink()?>
+
+  <?php echo $this->headScript()?>
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+<?php  echo $this->inlineScript();?>
+
+</head>
+<body>
+<div id="revealDiv" class="reveal-modal"></div>
+<div id="fb-root"></div>
+<script type="text/javascript">
+		var texto = new textoClass();
+	</script>
+	
+	
+<div id="wrapper" class="<?php  if($this->layout()->isHome):?>home<? else: ?>int<?php  endif;?>">
+<article id="mainContent">
+		<header>
+			
+
+			<hgroup>
+				<h1>
+					<?php  if($this->layout()->isHome):?><img src="/img/logoHome.png" alt="Agence Texto" />
+					<?php else : ?><img src="/img/pix.png" alt="Agence Texto" /><?php  endif;?>
+				</h1>
+				<h2>
+				<span><?php  if($this->layout()->isHome):?>Agence conseil en communication globale<?php else : ?><?php  echo $this->layout()->getView()->rubTitle?><?php  endif;?></span>
+				</h2>
+			</hgroup>
+
+
+		
+<nav id="primary_nav" class="primaryNav">
+				<ul>
+				<li><a href="/" <?php if($this->layout()->isHome):?>class="selected"<?php  endif?> data-title="Accueil" id="menu_0">Accueil</a></li>
+				
+				<?php if(!$this->layout()->maintenance)  foreach($this->layout()->menuTop as $menu):
+				$menu = (object) $menu;
+				//var_dump($menu->tpl=="rubcreations"&&$_SERVER["REMOTE_ADDR"]!=="90.10.158.54");
+				//echo $menu->tpl;
+				
+				//if($menu->tpl!="rubcreations"||$menu->tpl=="rubcreations"&&$_SERVER["REMOTE_ADDR"]!="90.10.158.54"):
+				// 
+				?>
+				
+				<li><a href="<?php  echo $menu->link?>" data-title="<?php  echo $menu->title?>" id="menu_<? echo $menu->id_rubrique?>" <?php  if($menu->id_rubrique==$this->layout()->getView()->mainRubID):?>class="selected"<?php  endif;?>><?php  echo $menu->title?></a></li>
+				<?php  //endif;?>
+                                
+                              
+			
+<?php  endforeach;?>
+
+
+			</ul>
+			</nav>
+
+		</header>
+		
+		<div id="articleCont">
+		
+
+
+
+				<nav id="primary_nav" class="primaryNav">
+					<ul>
+						<li><a href="/" <?php if($this->layout()->isHome):?>
+							class="selected" <?php  endif?> data-title="Accueil" id="menu_0">Accueil</a>
+						</li>
+
+						<?php if(!$this->layout()->maintenance)  foreach($this->layout()->menuTop as $menu):
+						$menu = (object) $menu;
+						?>
+
+						<li><a href="<?php  echo $menu->link?>"
+							data-title="<?php  echo $menu->title?>"
+							id="menu_<? echo $menu->id_rubrique?>"
+							<?php  if($menu->id_rubrique==$this->layout()->getView()->mainRubID):?>
+							class="selected" <?php  endif;?>><?php  echo $menu->title?> </a>
+						</li>
+
+
+						<?php  endforeach;?>
+					
+					</ul>
+				</nav>
+
+			</header>
+
+			<div id="articleCont">
+
+
+				<?php  echo $this->layout()->preview?>
+		
+		</div>
+		
+</article>
+	</div>
+
+
+
+
+
+
+	<section id="news">
+	
+	
+	<?php  if(!$this->layout()->maintenance):?>
+		<a href="#" rel="next" class="nav" id="nextCarousel"><i class="icon-angle-left"></i></a> <a href="#"
+			rel="prev" class="nav" id="previousCarousel"><i class="icon-angle-right"></i></a>
+
+		<div id="newsCont">
+			<ul id="wrapperImg" class="link">
+			
+			<?php 
+			$class = new Admin_Model_ContentMapper();
+			$arbo = new Admin_Model_ArboMapper();
+			
+			foreach($this->layout()->bandeauNews as $news):
+			$date = new Zend_Date($news->date);
+			$parentID = $arbo->getParentID($news->link);
+			?>
+			
+			<li><img src="<?php  echo IMG_FOLDER.$news->visuel;?>" alt="<?php  echo $news->title?>" />
+					<div class="newsContent">
+						<time datetime="<?php  echo $date->toString('YYYY-MM-dd')?>"><?php  echo $news->date?></time><br />
+						<h3><?php  echo $news->title?></h3>
+						<p>
+							<a href="<?php  echo $class->getHrefLink($news->link)?>" data-parentid="<?php  echo $parentID?>"><?php  echo $news->chapeau?></a>
+						</p>
+					</div>
+				</li>
+			
+			<?php  endforeach;?>
+		
+			</ul>
+		</div>
+		<?php  endif;?>
+
+	</section>
+
+	<footer id="mainFooter">
+	<ul id="shareTools">
+		<li><a href="#" id="fb"></a></li>
+		<li><a href="https://twitter.com/share" data-lang="fr" id="twitter" target="_blank"></a>
+
+		
+	</ul>
+	
+	<nav class="primaryNav">
+	<ul>
+	<?php  if(!$this->layout()->maintenance) foreach($this->layout()->menuBas as $key=>$menu):
+	$menu=(object)$menu;
+	
+	?>
+	<li <?php if($key>0):?>class="bullet"<?php  endif;?>>
+	<a href="<?php  echo $menu->link?>" id="menu_<?php  echo $menu->id_rubrique?>" data-title="<?php  echo $menu->title?>" <?php  if($menu->id_rubrique==$this->layout()->getView()->mainRubID):?>class="selected"<?php  endif;?>><?php  echo $menu->title?></a>
+	</li>
+	
+	<?php  endforeach;?>
+	</ul>
+	</nav>
+	
+	</footer>
+
+
+
+</body>
+</html>

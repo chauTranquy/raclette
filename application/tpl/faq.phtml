@@ -1,0 +1,23 @@
+<?php
+$liste = json_decode($data->questions);
+?>
+
+<?php
+foreach ($liste as $question):
+    if ($question->statut == 1):
+        ?>
+        <section class="faqSection">
+            <h2 class="faq">&bull; <?php echo $question->question; ?></h2>
+        <?php echo $question->reponse ?>
+        </section>
+            <?php
+        endif;
+    endforeach;
+    ?>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+        var glutabaye = new Glutabaye();
+        glutabaye.faqInit();
+    });
+</script>

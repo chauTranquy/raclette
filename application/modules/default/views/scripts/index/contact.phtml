@@ -1,0 +1,104 @@
+<?php
+
+//echo $this->partial('filariane.phtml', array("filAriane" => $this->filAriane));
+?>
+<!--<div id="subMenuNav">
+
+    <? // echo $this->partial('subMenu.phtml', array("subMenu" => $this->subMenu, "id_article" => $this->id_article)); ?>
+</div>-->
+<article class="content contact">
+
+    <?php // echo $this->partial('titre.phtml', array("titre" => $this->data->title)); ?>
+
+    <div class="articleContener">
+        <form id="contactForm" method="post">
+            <div id="adresseP">
+                <?php
+                echo $this->form->adresse;
+                ?>
+            </div>
+            <div id="formMessage"></div>
+            <?php
+            $form = json_decode($this->form->form);
+
+            foreach ($form as $field):
+                if ($field->statut == 1):
+                    $fieldName = Admin_Model_ContentMapper::untilAccents($field->label);
+                  
+                ?>
+
+                    <label  for="<?php echo $fieldName; ?>"><?php echo $field->label; ?> <?php if ($field->obligatoire != "0" && $field->obligatoire != null): ?>*<?php endif; ?> :</label>
+                    <?php
+                    switch ($field->type): /* En fonction du type de d_element */
+
+                        default :
+                            ?>
+                            <input type="text" name="<?php echo $fieldName; ?>" id="<?php echo str_replace(" ", "", $fieldName); ?>" value=""  />
+                            <?php
+                            break;
+                        case 2: /* email */
+                            ?>
+                            <input type="text" name="<?php echo $fieldName; ?>" id="<?php echo $fieldName; ?>" value="" class="required" />
+                            <?php
+                            break;
+                        case 3:
+                            ?>
+                            <textarea name="<?php echo $fieldName ?>" id="<?php echo $fieldName ?>"  class="required" ></textarea>
+                            <?php
+                            break;
+                        case 4 : /* liste de selection */
+                            break;
+                            ?>
+                        <?php
+                        case 5:
+                            ?>
+
+                            <input type="checkbox" name="<?php echo $fieldName ?>" id="<?php echo $fieldName ?>"  class="auto" value="1" />
+
+
+                            <?php
+                            break;
+                        case 6 : /* liste deroulante Pays */
+                            break;
+
+                    endswitch;
+
+
+                    if ($field->obligatoire == 1):
+                        $dataJSON = array("id" => $fieldName);
+
+                        if ($field->type == 2)
+                            $dataJSON["vtype"] = "email";
+                        if ($field->params != null) {
+
+                            $params = json_decode($field->params);
+                            if ($params->params):
+
+                                foreach ($params->params as $key => $value):
+
+                                    $dataJSON[$key] = $value;
+
+                                endforeach;
+
+                            endif;
+                        }
+                        array_push($compulsaryArray, $dataJSON);
+
+                    endif;
+                endif;
+            endforeach;
+            ?>
+
+            <input type="submit" value="Envoyer" id="envoyerID">
+
+        </form>    
+        <div id="ajaxWait" style="display:none">Veuillez patienter</div>
+        <div id="reponseCont" style="display:none">
+            <p></p>
+            <a href="http://<? echo $_SERVER["HTTP_HOST"] ?>">Accueil</a>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</article>
+<div class="clear"></div>

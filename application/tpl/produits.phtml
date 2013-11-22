@@ -1,0 +1,88 @@
+<h1 class="produit"><?php  echo $data->titre?></h1>
+<p class="descriptif"><?php  echo $data->descriptif ?></p>
+<img src="<?php  echo IMG_FOLDER.$data->visuel ?>" alt="<?php  echo $data->titre?>" class="produitImg" />
+<p class="conditionnement">
+<?php echo $data->conditionnement?>
+</p>
+<div class="ingredients">
+<h2>Ingr&eacute;dients</h2>
+<div class="clear left SUBCLASS">
+<?php  echo $data->ingredients?>
+</div>
+CONNEXE
+</div>
+<div class="clear"></div>
+<?php 
+$tpl = new Admin_Model_TemplateMapper();
+
+$dataCarac = $tpl->getFieldByName("produits", "caracteristiques");
+
+$specs=json_decode($dataCarac->extra_params->data);
+
+$arrayCarac=explode(",",$data->caracteristiques);
+?>
+<ul class="caracteristiques left">
+<?php 
+
+foreach($specs as $carac):
+
+if(in_array($carac->value, $arrayCarac)) :
+?>
+<li>
+	<div class="carac_<?php  echo $carac->value; ?> tip" title="<?php  echo $carac->label?>"></div>
+</li>
+
+<?php 
+
+endif;
+	
+
+endforeach;
+
+
+?>
+
+</ul>
+<img src="/img/produits/logo-afdiag.png" alt="signataire du contrat de licence avec l'Afdiag" title="signataire du contrat de licence avec l'Afdiag" class="tip right" />
+
+<table class="clear tableau left" cellspacing="2">
+  <tr>
+    <td rowspan="3" class="header"><div class="rotate">Pour 100 g</div></td>
+    <td colspan="3">Valeur &eacute;nerg&eacute;tique : <br /><?php 
+    $kj=(int)$data->valeurenergetique*4.1868;
+    
+    echo $data->valeurenergetique?>kcal (<?php  echo round($kj) ?>kj)</td>
+  </tr>
+  <tr class="carac">
+<td>Prot&eacute;ines : <?php echo $data->proteines?> g.</td>
+<td>Glucides : <?php echo $data->glucides?> g.
+
+<?php  if(!empty($data->sucre)||strlen($data->sucre)>0):?>
+	<br />dont sucre : <?php  echo $data->sucre ?> g. 
+
+<?php  endif;?>
+
+</td>
+<td>Lipides : <?php echo $data->lipides == NULL ? "0" : $data->lipides ?> g.
+<?php  if(!empty($data->acidesgras)||strlen($data->acidesgras)>0):?>
+	<br />dont acides gras satur&eacute;s : <?php  echo $data->acidesgras ?> g. 
+
+<?php  endif;?>
+
+</td>
+  </tr>
+  <tr>
+    <td colspan="3" class="nomargin">
+    <table><tr>
+    <td>Fibres : <?php echo $data->fibres == NULL ? "0" : $data->fibres?> g.</td>
+    <td>Sodium : <?php echo $data->sodium == NULL ? "0" : $data->sodium?> g.</td>
+    </tr></table>
+    </td>
+  </tr>
+</table>
+<p class="ref left">
+R&eacute;f <?php  echo $data->ref;?><br />
+
+<img src="<?php  echo IMG_FOLDER.$data->gencode;?>" alt="" />
+</p>
+

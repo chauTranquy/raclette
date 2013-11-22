@@ -1,0 +1,23 @@
+<script type="text/javascript">
+Ext.Loader.setConfig({enabled:true,paths:{'CmsClass':'/admin/loginJS/ext/CmsClass/','CMS':'/admin/loginJS/ext/app/', 'Ext':'/admin/loginJS/ext/'}});
+Ext.require(['CmsClass.LoginClass']);
+var loginClass;
+Ext.onReady(function(){
+
+
+loginClass=new CmsClass.LoginClass();
+
+});
+</script>
+<div id="headerAdmin">
+
+<h1><img src="<?php echo IMG_FOLDER.$this->site->site_logo?>" alt="<?php  echo $this->site->site_name?>" align="absmiddle"/>
+Administration du site - <?php  echo $this->site->site_name; ?>
+</h1>
+</div>
+<form id="loginForm">
+		<input type="text" id="loginInput" name="login" class="x-hide-display" style="display:none" autocomplete="on" />
+		<input type="password" id="passInput" name="pass"  class="x-hide-display" style="display:none" autocomplete="on" />
+	
+	</form>
+	

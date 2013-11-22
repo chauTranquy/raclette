@@ -1,0 +1,90 @@
+<article class="content home">
+
+    <div class="left">
+        <section id="recetteSection" class="section">
+            <header class="titrePenche"><h2>Recettes</h2></header>
+
+
+            <?php echo $this->partial('searchRecettes.phtml', array('rubRecettes' => $this->rubRecettes, "recettesHome" => $this->recettesHome, "isHome" => $this->layout()->isHome)) ?>
+        </section>
+
+
+        <section id="actuSection"  class="section">
+            <header class="titrePenche"><h2>Actualit&eacute;s</h2></header>
+
+            <ul class="carousel actu">
+
+
+                <?php foreach ($this->actusHome as $key => $actu): ?>
+                    <li>
+                     <img src="<?php echo $actu->visuel ?>" alt="<?php echo $actu->titre ?>" />
+                        <h3><?php echo $actu->subTitle ?></h3>
+                        <h4><?php echo $actu->titre ?></h4> 
+<p>
+                        <?php 
+                        echo $actu->intro ?><br />
+                         <a href="<?php  echo $actu->link?>">Lire la suite</a>
+                        </p>
+                     
+                    </li>
+                <?php endforeach; ?>
+
+            </ul>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+
+
+                    var numLi = $('ul.carousel.actu li').length;
+
+                    if (numLi > 1) {
+
+                        var ul = $('<ul id="navActus">');
+
+
+                        ul.appendTo($('ul.carousel.actu').parent());
+
+                        $('ul.carousel.actu').carouFredSel({circular: true,
+                            infinite: true,
+                            width: "100%",
+                            responsive: true,
+                            swipe: {onTouch:true, options:{allowPageScroll:'vertical' }},
+                            pagination: {
+                                container: "#navActus",
+                                keys: true,
+                                anchorBuilder: function(nr) {
+                                    return "<li />";
+                                }
+                            },
+                            auto: false,
+                            items: {
+                                visible: null, //	automatically calculated
+                                minimum: null, //	items.visible
+                                start: 0,
+                                width: null, //	automatically calculated
+                                height: null, //	automatically calculated
+                                filter: null
+                            }
+                        });
+
+                    }
+                    
+
+                });
+
+            </script>
+        </section>
+    </div>
+
+    <section id="produitsSection" class="left section">
+        <header class="titrePenche"><h2>Produits</h2></header>
+
+
+
+        <div class="clear"></div>
+        <?php echo $this->partial('searchProduits.phtml', array("rubList" => $this->rubList, "trucList" => $this->trucList, "produitsHome" => $this->produitsHome, "isHome" => $this->layout()->isHome)); ?>
+
+    </section>
+    <div class="clear"></div>
+</article>
+

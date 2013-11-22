@@ -1,0 +1,5 @@
+﻿insert INTO `#DBPREFIXtemplate_fields` VALUES ('120', 'RichText', '0', 'contact', '\"null\"', 'Ch&acirc;peau', '1', 'chapeau');
+insert INTO `#DBPREFIXtemplate_fields` VALUES ('121', 'ItemsMenu', '1', 'contact', '{\"fields\":[{\"field_type\":\"text\",\"compulsary\":\"1\",\"label\":\"Intitul&eacute\",\"name\":\"label\",\"showCol\":\"1\"},{\"field_type\":\"combo\",\"compulsary\":\"true\",\"label\":\"type\",\"name\":\"type\",\"extraParams\":[{\"value\":\"1\",\"label\":\"Champ texte\"},{\"value\":\"2\",\"label\":\"Email\"},{\"value\":\"3\",\"label\":\"Zone de texte\"},{\"value\":\"4\",\"label\":\"Liste de s&eacute;lection\"},{\"value\":\"6\",\"label\":\"Liste des pays\"},{\"value\":\"5\",\"label\":\"Case &agrave; cocher\"}]},{\"field_type\":\"textarea\",\"label\":\"Param&egrave;tres\",\"compulsary\":\"0\",\"name\":\"params\"},{\"field_type\":\"checkbox\",\"label\":\"Obligatoire\",\"compulsary\":\"0\",\"name\":\"obligatoire\"}]}', 'Formulaire', '2', 'form');
+insert INTO `#DBPREFIXuser_group` VALUES('1','Super Administrateur','1','1');
+INSERT INTO `#DBPREFIXuser_group` VALUES ('1', 'Super Admin', '1', '1');
+

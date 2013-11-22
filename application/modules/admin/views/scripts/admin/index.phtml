@@ -1,0 +1,21 @@
+ <script type="text/javascript">
+    DEFAULT_ADMIN_URL = "/admin/getjsondata/format/json";
+    arrayExt = {"image":["jpg","jpeg","gif","png"],"pdf":["pdf"],"flash":["flv","swf"], "office":["doc","xls","ppt","docx","xlsx","pptx"], "other":["zip","txt","odt","ods","odp","odg","fodt","fods","fodp","fodg","rar"]};
+    otherFileExt = ["php","css","js","html"];
+    arrayTTF=["ttf","eot","svg","woff"];
+    </script>
+
+<div id="headerAdmin">
+<h1>
+Administration du site - <?php  echo $this->site->site_name; ?>
+</h1>
+
+<div id="logoutDiv">
+<div id="myAccountBtn" style="float:left" data-qtip="Modifier votre profil"></div>
+<div style="float:left; margin-left:5px" id="nameWrapper">Bonjour, <?php echo ($this->userData->firstname." ".$this->userData->lastname)?></div>
+
+<div class="x-clear"></div>
+<div id="logoutBtn" style="float:right"><a href="/" id="viewSite" target="siteWin">Acc&eacute;der au site</a>&nbsp;<a href="/admin/logout" id="logoutLink">D&eacute;connexion</a></div>
+</div>
+
+</div>
