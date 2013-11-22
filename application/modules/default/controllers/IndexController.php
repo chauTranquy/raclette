@@ -180,6 +180,8 @@ class IndexController extends Zend_Controller_Action {
 
         $this->layout->isHome = $this->isHome;
         $this->view->content = $this->html;
+        
+        echo "home";
     }
 
     private function getContentData() {
